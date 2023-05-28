@@ -35,27 +35,21 @@ socket.on('ok_signin', () => {
 
 socket.on('ready', (data) => {
     const { game_id, player_turn_id, board } = data;
-
     console.log(`Ready to play game ${game_id}`);
     console.log(`It is player ${player_turn_id}'s turn`);
     console.log(`The board is ${board}`);
 
     // TODO: Your logic / user input here
 
-    const movement = Math.floor(Math.random() * 3)
+    var movement = Math.floor(Math.random() * board.length)
 
-    readline.question("Movimiento: ", turno => {
-        var Movimiento = Number(turno)
-        socket.emit('play', {
-            tournament_id: 142857,
-            player_turn_id: player_turn_id,
-            game_id: game_id,
-            movement: movement
-            // movement: movimientos[contador]
-        });
-    })
-
-
+    socket.emit('play', {
+        tournament_id: 142857,
+        player_turn_id: player_turn_id,
+        game_id: game_id,
+        movement: movement
+        // movement: movimientos[contador]
+    });
 
 
     contador = contador + 1
@@ -67,7 +61,7 @@ socket.on('finish', (data) => {
 
     console.log(`Game ${game_id} has finished`);
     console.log(`Player ${winner_turn_id} is the winner`);
-    console.log(`The board is ${board}`);
+    console.log(board);
 
     // TODO: Your cleaning board logic here
 
