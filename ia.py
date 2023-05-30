@@ -189,6 +189,7 @@ def play_connect4():
 
         else:
             col, _ = minimax(board, 6, -float('inf'), float('inf'), True)
+            print(col)
             if is_valid_location(board, col):
                 make_move(board, col, AI)
                 if check_win(board, AI):
