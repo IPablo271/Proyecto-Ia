@@ -9,7 +9,7 @@ socketIO = SocketIO(server_url, server_port)
 def on_connect():
     print("Connected to server")
     socketIO.emit('signin', {
-        'user_name': "George Knight",
+        'user_name': "Pablish",
         'tournament_id': 142857,
         'user_role': 'player'
     })
